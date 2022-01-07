@@ -20,7 +20,7 @@ jobs:
     - run: npm install
     - run: npm run test
       continue-on-error: true
-    - run: npm run test:healthcheck
+   
     - run: npm run test:contract
     - run: npm run test:functional
    
