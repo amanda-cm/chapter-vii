@@ -53,6 +53,30 @@ class Requests {
         })
     } 
 
+    updateBookingWithTokenInvalid(response){
+        const id = response.body.bookingid
+
+        return cy.request({
+            method: 'PUT',
+            url: `booking/${id}`,
+            headers: {
+                Cookie: 'tokeninvalido'
+            },
+            body: {
+                "firstname": "Jim",
+                "lastname": "James",
+                "totalprice": 111,
+                "depositpaid": false,
+                "bookingdates": {
+                    "checkin": "2020-01-01",
+                    "checkout": "2020-01-02"
+                },
+                "additionalneeds": "Lunch"
+            },
+            failOnStatusCode: false
+        })
+    }
+
     updateBooking(response){
         const id = response.body.bookingid //guarda o bookingid em id
 
@@ -73,7 +97,7 @@ class Requests {
                 },
                 "additionalneeds": "Lunch"
             },
-            failOnStatusCode: false  //para o request não falhar independete do status code (ele falhava se não fosse 2xx ou 3xxx)
+            failOnStatusCode: false 
         })
     } 
 
@@ -118,6 +142,19 @@ class Requests {
             failOnStatusCode: false
         }
     )}
+
+    deleteBookingWithTokenInvalid(response){
+        const id =  response.body.bookingid
+
+        return cy.request({
+            method: 'DELETE',
+            url: `booking/${id}`,
+            headers: {
+                Cookie: '66dd485209bfa55'
+            },
+            failOnStatusCode: false
+        })
+    }
 }
 
 export default new Requests();
