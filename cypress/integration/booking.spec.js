@@ -17,7 +17,7 @@ context('Booking', () => {
             )
         })
     });
-
+    
     it('Criar uma reserva com sucesso @functional', () => {
        req.postBooking().then(postBookingResponse => {  //postBooking é a requisição (requests)
                                                        //postBookingResponse guarda a resta da requisição
